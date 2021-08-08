@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+html, body{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 1.15rem;
+}
+
+h1,h2,h3,h4,h5,h6{
+    margin:0
+}
+
+.btn{
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    padding: .25rem .5rem;
+    border: solid 1px #2196f3;
+    background-color: white;
+    font-size: 1.1rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.btn:hover{
+    border: solid 1px #1a1a1a;
+}
+
+.btn:active{
+    transform: scale(0.8);
+}

@@ -1,0 +1,21 @@
+.body{
+    /* background-color: red; */
+    text-align: center;
+    padding: 3rem;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.footer img{
+    width: 400px;
+}
+
+.btn-zone{
+    margin-top: 1rem;
+}

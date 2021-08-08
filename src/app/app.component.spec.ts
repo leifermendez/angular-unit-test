@@ -1,31 +1,53 @@
 import { TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
-describe('AppComponent', () => {
+//TODO: "spec.ts <--"
+//TODO: 😨 es la sintaxis de Jasmin!
+
+describe(`(1) TEST del componente "AppComponent"`, () => {
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
     }).compileComponents();
+
   });
 
-  it('should create the app', () => {
+  //TODO:Aislado! 
+  it('Debe de existir el AppComponent', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance
+    expect(app).toBeTruthy(); //TODO: ✔
+  });
+
+  //TODO:Aislado!
+  it(`Debe de iniciarse "title" con "Ejercicio #1 Unit Testing Angular"`, () => {
+    const titleTest = 'Ejercicio #1 Unit Testing Angular'
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(app.title).toEqual(titleTest)
   });
 
-  it(`should have as title 'clase-unit-test'`, () => {
+  it(`Debe de actualizarse con emojis al click`, () => {
+
+    const testContentEmoji = '😁😁😁😁😁😁😁'
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('clase-unit-test');
+
+    fixture.detectChanges()
+
+
+    const btnElement = fixture.debugElement.query(By.css('button.btn'))
+    btnElement.nativeElement.click()
+    fixture.detectChanges()
+
+
+    const elementEmoji = fixture.debugElement.query(By.css('.emoji-zone')).nativeElement.innerText
+    expect(elementEmoji).toEqual(testContentEmoji);
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('clase-unit-test app is running!');
-  });
+
 });
