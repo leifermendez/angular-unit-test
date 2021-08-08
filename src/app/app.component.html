@@ -1,16 +1,26 @@
 <div class="body">
   <h1>{{title}}</h1>
   <p>{{subTitle}}</p>
+  <p><b>Session: {{isCheck | json}}</b></p>
   <div class="emoji-zone" *ngIf="showEmoji">{{contentEmoji}}</div>
-  <div class="btn-zone ">
-    <button (click)="clickBtn()" class="btn">Suscribete</button>
-  </div>
-  <div>
-    <li *ngFor="let datum of listData">
-      {{datum.title}}
-    </li>
-  </div>
+
+  <form [formGroup]="form" (submit)="sendLogin()" class="form">
+    <div class="form-group">
+      <label>Email</label>
+      <input formControlName="email" type="text">
+    </div>
+    <div class="form-group">
+      <label>Passsword</label>
+      <input formControlName="password" type="text">
+    </div>
+    <div class="form-group">
+      <button class="btn">Enviar</button>
+    </div>
+    <div>
+      {{form.value | json}}
+    </div>
+  </form>
 </div>
-<div class="footer">
+<!-- <div class="footer">
   <img src="https://i.imgur.com/LcgxjkL.png" alt="">
-</div>
+</div> -->

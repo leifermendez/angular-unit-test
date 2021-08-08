@@ -19,3 +19,27 @@
 .btn-zone{
     margin-top: 1rem;
 }
+
+.form{
+    padding: 1rem;
+    display: flex;
+    width: 400px;
+    margin: auto;
+    flex-direction: column;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.form .form-group{
+    margin-bottom: .5rem;
+}
+
+.form .form-group input{
+    width: 90%;
+    border: solid 1px #1a1a1a;
+    padding: .5rem;
+    border-radius: .25rem;
+}
+
+.form .form-group label{
+    display: block;
+}

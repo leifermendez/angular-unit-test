@@ -1,6 +1,7 @@
 import { Data } from './models/data';
 import { DataService } from './services/data.service';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -12,23 +13,22 @@ export class AppComponent implements OnInit {
   title = 'Ejercicio #1 Unit Testing Angular';
   subTitle = 'Estamos creando este ejercicio para comenzar a aprender sobre pruebas unitarias en componentes'
   contentEmoji = ''
-  listData: Data[] = []
 
-  constructor(private dataService: DataService) {
+  form: FormGroup = new FormGroup({})
+  isCheck: any;
 
-  }
+  constructor(private fb: FormBuilder) {
 
-  clickBtn(): void {
-    this.showEmoji = true;
-    this.contentEmoji = '😁😁😁😁😁😁😁'
   }
 
   ngOnInit(): void {
-    this.loadData()
+    this.form = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
+    })
   }
 
-  loadData(): void {
-    this.dataService.getData()
-      .subscribe(data => this.listData = data)
+  sendLogin(): void {
+    this.isCheck = { user: 1 }
   }
 }
