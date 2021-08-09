@@ -1,46 +1,50 @@
-import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
-import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
-import { TestBed } from '@angular/core/testing';
+import { HttpErrorResponse } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
 
-describe('AuthService', () => {
+describe('(3) Prueba a "AuthService"', () => {
   let service: AuthService;
-  let httpClientSpy: { post: jasmine.Spy };
-  ;
-  beforeEach(() => {
+  let httpClientSpy: { post: jasmine.Spy }; //TODO: 🙄
+
+  beforeEach(() => { //TODO: Antes de cada it (prueba)
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['post']);
     service = new AuthService(httpClientSpy as any);
   });
 
-  it('should be created', () => {
+  //TODO: Que se cree!
+  it('Debe de crearse correctamente', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Deberia retornar login 200', (done: DoneFn) => {
+  //TODO: Debe retornar objecto del usuario
+  it('Deberia retornar objecto usuario (Login Correcto)', (done: DoneFn) => {
+
     //TODO: Mock de datos!
 
-    const mockUserCredentials = {
+    const mockUserCredentials = { //TODO: Exito!
       email: 'leifer33@gmail.com',
       password: '123456'
     }
 
     const mockResultLogin = {
       "data": {
-        "id": 1,
+        "id": 2,
         "user": "Leifer"
       }
     }
 
-    httpClientSpy.post.and.returnValue(of(mockResultLogin));
+    httpClientSpy.post.and.returnValue(of(mockResultLogin)) //TODO: Observable!
 
     //TODO: Act
+
     const { email, password } = mockUserCredentials
+
     service.login(email, password)
-      .subscribe(res => {
-        expect(res).toEqual(mockResultLogin)
+      .subscribe(resultado => { //TODO: No se sabe el tiempo 
+        expect(resultado).toEqual(mockResultLogin)
         done()
       })
+
   });
 
   it(`Deberia retornar error 409`, (done: DoneFn) => {

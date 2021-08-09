@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { DataService } from './data.service';
 
-describe('DataService', () => {
+describe('(2) Prueba a "DataService"', () => {
   let service: DataService;
 
   beforeEach(() => {
@@ -10,14 +10,14 @@ describe('DataService', () => {
     service = TestBed.inject(DataService);
   });
 
-  it('should be created', () => {
+  it('Debe de crearse correctamente', () => {
     expect(service).toBeTruthy();
   });
 
   it(`Revisar generación de numeros`, () => {
-    const [numberA, numberB] = service.generateNumbers()
+    const [numberA, numberB] = service.generateNumbers() //TODO: [1,2]
     const sum = numberA + numberB;
-    expect(sum).toMatch(/\d{1,}/)
+    expect(sum).toMatch(/\d{1,}/) //TODO: Resultado sea number
   })
 
   it(`Revisar operacion matematica`, () => {

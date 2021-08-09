@@ -19,8 +19,11 @@ export class AppComponent implements OnInit {
   isCheck: any;
   checkHuman: Array<any> = []
 
-  constructor(private fb: FormBuilder, private authService: AuthService,
-    private dataService: DataService) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService, //TODO: Login HTTP
+    private dataService: DataService //TODO: Matematica
+  ) {
 
   }
 
@@ -31,19 +34,22 @@ export class AppComponent implements OnInit {
       result: ['', [Validators.required]],
     })
 
-    this.checkHuman = this.dataService.generateNumbers()
+    this.checkHuman = this.dataService.generateNumbers() //TODO: [1,2]
   }
 
   sendLogin(): void {
-    const [numberA, numberB] = this.checkHuman;
+    const [numberA, numberB] = this.checkHuman; //TODO: [1,2]
     const result = this.form.value.result
     const check = this.dataService.checkOperation(numberA, numberB, result)
-    console.log('___', check)
+    if (!check) {
+      this.isCheck = 'ERROR_CHECK'
+      return
+    }
     const email = this.form.value.email;
     const password = this.form.value.password;
 
     this.authService.login(email, password)
-      .subscribe(res => this.dataSession = res,
+      .subscribe(res => this.dataSession = res, //TODO: Objecto usuario 
         (err: any) => this.isCheck = 'ERROR_USER')
   }
 }

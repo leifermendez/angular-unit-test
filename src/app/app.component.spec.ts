@@ -14,7 +14,7 @@ describe(`(1) TEST del componente "AppComponent"`, () => {
       imports: [
         ReactiveFormsModule,
         FormsModule,
-        HttpClientTestingModule
+        HttpClientTestingModule//TODO: <-----
       ],
       declarations: [
         AppComponent
