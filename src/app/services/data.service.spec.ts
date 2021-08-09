@@ -14,10 +14,17 @@ describe('DataService', () => {
     expect(service).toBeTruthy();
   });
 
-  // it('deberia de retornar una lista', () => {
-  //   service.getData().subscribe(res => {
+  it(`Revisar generación de numeros`, () => {
+    const [numberA, numberB] = service.generateNumbers()
+    const sum = numberA + numberB;
+    expect(sum).toMatch(/\d{1,}/)
+  })
 
-  //   })
-  //   expect(service).toBeTruthy();
-  // });
+  it(`Revisar operacion matematica`, () => {
+    const numberA = 5
+    const numberB = 4
+    const check = service.checkOperation(numberA, numberB, 9)
+    expect(check).toBeTrue()
+  })
+
 });

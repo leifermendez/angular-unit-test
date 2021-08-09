@@ -17,6 +17,7 @@ h1,h2,h3,h4,h5,h6{
     border: solid 1px #2196f3;
     background-color: white;
     font-size: 1.1rem;
+    border-radius: .15rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
@@ -26,4 +27,12 @@ h1,h2,h3,h4,h5,h6{
 
 .btn:active{
     transform: scale(0.8);
+}
+
+button:disabled{
+    opacity: .5;
+}
+
+.alert{
+    padding: .35rem;
 }

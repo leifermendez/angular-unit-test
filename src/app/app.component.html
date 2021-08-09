@@ -1,25 +1,43 @@
 <div class="body">
   <h1>{{title}}</h1>
   <p>{{subTitle}}</p>
-  <p><b>Session: {{isCheck | json}}</b></p>
   <div class="emoji-zone" *ngIf="showEmoji">{{contentEmoji}}</div>
 
-  <form [formGroup]="form" (submit)="sendLogin()" class="form">
-    <div class="form-group">
-      <label>Email</label>
-      <input formControlName="email" type="text">
-    </div>
-    <div class="form-group">
-      <label>Passsword</label>
-      <input formControlName="password" type="text">
-    </div>
-    <div class="form-group">
-      <button class="btn">Enviar</button>
+  <div *ngIf="!dataSession">
+    <form [formGroup]="form" (submit)="sendLogin()" class="form">
+      <div class="form-group">
+        <label>Email</label>
+        <input formControlName="email" type="text">
+      </div>
+      <div class="form-group">
+        <label>Passsword</label>
+        <input formControlName="password" type="text">
+      </div>
+      <div class="form-group">
+        <button [disabled]="form.invalid" class="btn">Enviar</button>
+      </div>
+      <div class="form-group">
+        <label>{{checkHuman[0]}} + {{checkHuman[1]}} = </label>
+        <input formControlName="result" type="text">
+      </div>
+
+      <div class="alert" *ngIf="isCheck === 'ERROR_USER'">
+        Usuario o Contraseña incorrecta
+      </div>
+    </form>
+  </div>
+
+
+  <div *ngIf="dataSession">
+    <div class="profile">
+      <img src="https://i.imgur.com/Uuyow3R.jpg" alt="">
     </div>
     <div>
-      {{form.value | json}}
+      <h3>{{dataSession | json}}</h3>
     </div>
-  </form>
+  </div>
+
+
 </div>
 <!-- <div class="footer">
   <img src="https://i.imgur.com/LcgxjkL.png" alt="">
